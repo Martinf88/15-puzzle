@@ -29,7 +29,7 @@ export default function GameBoard() {
 		setNumbers(shuffledNumbers)
 	}
 
-	function handleTileMove(params) {
+	function handleTileMove() {
 		
 	}
 
@@ -43,7 +43,7 @@ export default function GameBoard() {
 			number={number}
 			totalTiles={numbers.length}
 			handleTileMove={handleTileMove}
-
+			onClick={handleTileMove}
 			/>
 		))}
 	</div>
