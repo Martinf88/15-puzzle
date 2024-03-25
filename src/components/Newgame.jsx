@@ -1,7 +1,8 @@
 import React from 'react'
+import shuffleArray from './GameBoard'
 
 export default function Newgame() {
   return (
-	<button className='new-game-btn'>New Game</button>
+	<></>
   )
 }

@@ -1,27 +1,30 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import Tile from './Tile'
 
 export default function GameBoard() {
 
-	/* 
-   The 'numbers' array is generated using Array.from() to create an array containing numbers from 1 to 16.
-	*/
-	const numbers = Array.from({ length: 16}, (_, index) => index +1)
-	// 	Alternative: const numbers = [];
-	// 	for (let i = 1; i <= 16; i++) {
-	// 	numbers.push(i);
-	//   }
-
-	shuffleArray(numbers);
-	console.log(numbers);
-
-
+	const [numbers, setNumbers] = useState([]);
+	
+	
 	function shuffleArray(array) {
-		for (let i = array.length -1; i > 0; i--){
+		const shuffledArray = [...array];
+		for (let i = shuffledArray.length - 1; i > 0; i--){
 			const j = Math.floor(Math.random() * (i + 1));
-			[array[i], array[j]] = [array[j], array[i]];
+			[shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
 		}
-		return array;
+		return shuffledArray;
+	}
+	
+	//Shuffle the array upon initial render
+	useEffect(() => {
+		const initialNumbers = Array.from({ length: 16}, (_, index) => index +1)
+		const shuffledNumbers = shuffleArray(initialNumbers);
+		setNumbers(shuffledNumbers)
+	},[])
+
+	function handleNewGameClick() {
+		const shuffledNumbers = shuffleArray(numbers);
+		setNumbers(shuffledNumbers)
 	}
 
 	function handleTileMove(params) {
@@ -29,7 +32,9 @@ export default function GameBoard() {
 	}
 
   return (
-	<div className='game-board'>
+	<>
+		<button className='new-game-btn' onClick={handleNewGameClick}>New Game</button>
+		<div className='game-board'>
 		{numbers.map((number) => (
 			<Tile 
 			key={number} 
@@ -40,5 +45,6 @@ export default function GameBoard() {
 			/>
 		))}
 	</div>
+	</>
   )
 }
