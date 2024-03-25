@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	font-family: open sans;
 	box-sizing: border-box;
@@ -7,30 +13,9 @@ body {
 	color: hsla(0, 0%, 100%, 0.95);
 }
 
-h1 {
-	text-align: center;
-}
-
-.game-container {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 5px;
-	height: 300px;
-	width: 300px;
-	margin: 0 auto;
-}
-
-.tile{
-	background-color: hsl(0, 94%, 49%);
-	border-radius: 4px;
+.container {
+	width: 100%;
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 24px;
-	font-weight: 600;
-	cursor: pointer;
-}
-
-.tile:hover {
-	background-color:  hsla(0, 94%, 49%, 0.7);
+	flex-direction: column;
+	gap: 2em
 }
